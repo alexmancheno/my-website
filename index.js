@@ -1,3 +1,4 @@
+var cool = require('cool-ascii-faces');
 var pg = require('pg');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -12,8 +13,8 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-var dbURL = 'postgres://localhost:5432/my_website';
-console.log(dbURL);
+var dbURL = process.env.DATABASE_URL;
+var port = process.env.PORT || 3000;
 
 app.get('/', function(req, res) {
     res.render('homepage');
@@ -21,6 +22,10 @@ app.get('/', function(req, res) {
 
 app.get('/portfolio', function(req, res) {
     res.render('portfolio');
+})
+
+app.get('/cool', function(req, res) {
+    res.send(cool());
 })
 
 app.get('/blog', function(req, res) {
@@ -38,7 +43,8 @@ app.get('/blog/:id', function(req, res) {
         var blog_id = req.params.id;
         client.query(`select * from blog where id = '${blog_id}' `, function(err, result) {
             console.log(result + " yuuuup");
-            res.render('blog/blog_post', {data: result.rows[0]});
+            res.render('blog/blog_post', {
+                data: result.rows[0]});
             console.log(result.rows);
             done();
             pg.end();
@@ -61,6 +67,6 @@ app.post('/edit-posts', function(req, res) {
     })
 })
 
-app.listen(3000, function() {
+app.listen(port, function() {
     console.log("Your app is running!");
 })
