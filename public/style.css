@@ -1,0 +1,9 @@
+body {
+  background: url('background.jpg') no-repeat center fixed;
+  background-size: auto;
+}
+
+
+.page_subheader {
+  margin-top: 0px;
+}

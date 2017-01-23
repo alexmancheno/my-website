@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <h1>Welcome to Alex's website!</h1>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Alex's Website</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/edit-posts">Edit Posts</a></li>
+      </ul>
+    </div>
+  </nav>
+  <h3 class="page_subheader">Blog</h3>
+
+  <div class="posts_container">
+    <h4>Posts:</h4>
+    <ul class="list-group" style="width: 100%;">
+      <% for (var i = 0; i < data.length; i++) { %>
+        <li class="list-group-item"><a href=<%="/blog/" + data[i].id %>><%=data[i].title%></a><span class="badge"><%=data[i].date_posted%></span></li>
+      <% } %>
+    </ul>
+  </div>
+</body>
+</html>
