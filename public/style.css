@@ -1,9 +1,11 @@
 body {
-  background: url('background.jpg') no-repeat center fixed;
+  background: url('green-wallpaper.jpg') no-repeat center fixed;
   background-size: cover;
 }
 
-
+*{
+  font-family: monospace;
+}
 .page_subheader {
   margin-top: 0px;
 }
